@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 if (! isset($afterBootstrap)) {
     $afterBootstrap = NULL;
 }

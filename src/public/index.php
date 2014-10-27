@@ -1,4 +1,4 @@
-<?php  
+<?php
 if (empty($_GET)) {
     $pathPage = '../pages/accueil.php';
     $title = "Accueil";
@@ -12,23 +12,23 @@ if (empty($_GET)) {
     $active = "?page=" . $_GET['page'];
 }
 
-
-
 ob_start();
 require_once $pathPage;
 $buffer = ob_get_clean();
 
-    require_once '../layout/header.php';
-    require_once '../layout/tab.php';
-   
+if ($pathPage == "404.php") {
 
+    echo $buffer;
+}
+else {
+require_once '../layout/header.php';
+require_once '../layout/tab.php';
 
 echo $buffer;
 
-
-    require_once '../layout/footer.php';
+require_once '../layout/footer.php';
   
-   
+}
  
 
 

@@ -1,10 +1,8 @@
-<?php 
+<?php
 
 /** Connexion ***/
-
-function connexion () {
-
-
+function connexion()
+{
     $dsn = 'mysql:dbname=mini_projet;hoste=localhost';
     $user = 'mini_projet';
     $password = '0000';
@@ -15,6 +13,4 @@ function connexion () {
         echo 'Connexion échouée : ' . $e->getMessage();
     }
     return $dbh;
-
-
 }

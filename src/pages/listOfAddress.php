@@ -13,25 +13,25 @@ $afterjQuery = '<!-- DataTables -->
 ?>
 
 
-    <!-- List of address Section -->
-    <section id="listAddress">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>List of address</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
-            <div class="row">
+<!-- List of address Section -->
+<section id="listAddress">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>List of address</h2>
+				<hr class="star-primary">
+			</div>
+		</div>
+		<div class="row">
          <?php if (empty($address)){ echo "Le tableau de données est vide"; }else {?>    
 		<table id="table_id" class="display">
-		<thead>
-			<tr>
+				<thead>
+					<tr>
 				 <?php foreach ($address[0] as $key => $val) { if($key !== 'id') {echo "<th>".ucfirst($key)."</th>"; }} ?>
 				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
+					</tr>
+				</thead>
+				<tbody>
 			 <?php foreach ($address as $val){?>
 				<tr>
 				<?php
@@ -41,16 +41,16 @@ $afterjQuery = '<!-- DataTables -->
                 echo "<td>" . $val['url'] . "</td>";
                 ?>
                 <td><a href="delete.php?id=<?=$val['id']?>&type=article"><button
-							class="btn btn-danger">Supprimer</button> </a> <a
-					href="edit_article.php?id=<?=$val['id']?>&type=article"><button
-							class="btn btn-success">Editer</button> </a></td>
-			</tr>
+									class="btn btn-danger">Supprimer</button> </a> <a
+							href="edit_article.php?id=<?=$val['id']?>&type=article"><button
+									class="btn btn-success">Editer</button> </a></td>
+					</tr>
 			<?php }?>
 				
 			</tbody>
-	</table>
+			</table>
 		<?php }?>
         </div>
-        </div>
-    </section>
+	</div>
+</section>
 
