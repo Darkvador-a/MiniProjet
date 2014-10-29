@@ -4,7 +4,6 @@ if (isset($beforejQuery)) {
 }
 ?>
 <!-- Footer -->
-
 <footer class="text-center">
 	<div class="footer-above">
 		<div class="container">
@@ -51,24 +50,33 @@ if (isset($beforejQuery)) {
 
 <!-- jQuery Version 1.11.0 -->
 <script src="js/jquery-1.11.0.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="assets/DataTables-1.10.3/media/js/jquery.dataTables.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-
 <!-- Plugin JavaScript -->
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.js"></script>
+<script src="js/import.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/freelancer.js"></script>
 
 <!-- Contact Form JavaScript -->
 <script src="js/jqBootstrapValidation.js"></script>
 <script src="js/create_addre.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="js/freelancer.js"></script>
+<!-- delete js -->
+<script src="js/delete.js" ></script>
+
+<!-- edit js -->
+<<script src="js/edit.js"></script>
+ 
+<?= (isset($afterjQuery))? $afterjQuery : "";?>
 
 </body>
-
 </html>
-<?= (isset($afterjQuery))? $afterjQuery : "";?>

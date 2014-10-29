@@ -21,14 +21,33 @@ function creat($data)
         'description' => $data['description'],
         'link' => $data['link']
     ));
+    if ($sth->errorCode() != '00000' && $sth->errorCode() !== NULL) {
+        echo $sth->errorInfo()[2];
+        $result = false;
+    }
     
-    return $restult;
+    return $result;
+}
+
+function import($data)
+{
+    $connect = connexion();
+    $sql = 'INSERT INTO `mini_projet`.`address` (`id`, `address`, `title`, `description`, `url`) 
+			VALUES (NULL, :address, :title, :description, :link);';
+    $sth = $connect->prepare($sql);
+    $sth->execute(array(
+        'address' => $data['address'],
+        'title' => $data['title'],
+        'description' => $data['description'],
+        'link' => $data['link']
+    ));
 }
 
 /**
  *
  * @return multitype:
  */
+
 function readAll()
 {
     $connect = connexion();
@@ -40,6 +59,7 @@ function readAll()
     
     return $address;
 }
+
 
 /**
  *

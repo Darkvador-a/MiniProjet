@@ -13,11 +13,14 @@ echo '<!DOCTYPE html>
 
     <!-- Custom CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
-      ' . $afterBootstrap . '
+     <!-- dialog style-->
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <!-- Custom Fonts -->
     <link href="assets/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    
+     ' . $afterBootstrap . '
 </head>
 <body id="page-top" class="index">
     

@@ -2,16 +2,17 @@
 require_once '../base/address.php';
 $address = readAll();
 $afterBootstrap = ' <link rel="stylesheet" type="text/css" href="assets/DataTables-1.10.3/media/css/jquery.dataTables.css">';
-$afterjQuery = '<!-- DataTables -->
-	<script type="text/javascript" charset="utf8"
-		src="assets/DataTables-1.10.3/media/js/jquery.dataTables.js"></script>
+$afterjQuery = ' 
 	<script>
-    $(document).ready( function () {
-        $("#table_id").DataTable();
-    } );</script> ';
-
+    var table;
+	$(document).ready( function () {
+            console.log("doncument");
+           table =$("#table_id").DataTable();
+           console.log("document :"+table);
+  });
+    </script>';
 ?>
-
+      
 
 <!-- List of address Section -->
 <section id="listAddress">
@@ -34,16 +35,22 @@ $afterjQuery = '<!-- DataTables -->
 				<tbody>
 			 <?php foreach ($address as $val){?>
 				<tr>
-				<?php
-                echo "<td>" . $val['title'] . "</td>";
+    			    <?php
+                echo "<td id='title'>" . $val['title'] . "</td>";
                 echo "<td>" . $val['description'] . "</td>";
                 echo "<td>" . $val['address'] . "</td>";
                 echo "<td>" . $val['url'] . "</td>";
                 ?>
-                <td><a href="delete.php?id=<?=$val['id']?>&type=article"><button
-									class="btn btn-danger">Supprimer</button> </a> <a
-							href="edit_article.php?id=<?=$val['id']?>&type=article"><button
-									class="btn btn-success">Editer</button> </a></td>
+                       
+                     <td>
+                        <p id="editbox-button-<?= $val['id']?>" >
+                            <button class="btn btn-danger delete" onclick="Delete(<?= $val['id']?>)">Supprimer</button>
+						    <button class="btn btn-success edit-button" onclick="edit(<?= $val['id']?>)">Editer</button>
+						 </p>
+					     <p id="editbox-commands-<?= $val['id']?>" style="display: none;">
+                        <button class="btn btn-success" id="edit-book-validate-1" >Valide</button> ou
+                        <button class="btn btn-primary"  id="edit-book-cancel-1" >Cancle</button>
+                    </p></td>	
 					</tr>
 			<?php }?>
 				
@@ -51,6 +58,9 @@ $afterjQuery = '<!-- DataTables -->
 			</table>
 		<?php }?>
         </div>
+        <div id="result"></div>
 	</div>
 </section>
+
+
 
