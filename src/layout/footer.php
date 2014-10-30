@@ -61,7 +61,7 @@ if (isset($beforejQuery)) {
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.js"></script>
-<!-- Import CSV-->
+<!--  import CSV file-->
 <script src="functionsjs/import.js"></script>
 
 <!-- Custom Theme JavaScript -->

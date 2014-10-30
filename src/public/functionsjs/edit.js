@@ -36,6 +36,7 @@ oldLink= $('#link-' + id).html();
  }
 
  function Valide(id){
+	 console.log("id valider: "+ id);
  	  // On commence par envoyer un message de chargement en haut et en bas du tableau (dans le cas d'un tableau long)
   $('.ajax-response').html('<img src="/img/loading.gif" alt="Loading" /> Enregistrement des modifications en cours...');
 
@@ -93,6 +94,7 @@ oldLink= $('#link-' + id).html();
   });
  }
  function Cancel(id){
+  console.log("cancel: " +id);
   
  	// On supprimer les champs et on affiche les anciennes valeurs
   $('#title-' + id).html('').html(oldTitle);
