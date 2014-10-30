@@ -22,8 +22,8 @@ if (isset($_POST) && isset($_POST["send"]) == "submit") {
                 
                 $handle = fopen($filename, 'r');
                 while (! feof($handle)) {
-                    $aim = (fgetcsv($handle));
-                    
+                    $aim = (fgetcsv($handle, 1000, ","));
+                    var_dump($aim);
                     $data = array(
                         'title' => $aim[0],
                         'description' => $aim[1],
@@ -31,6 +31,7 @@ if (isset($_POST) && isset($_POST["send"]) == "submit") {
                         'link' => $aim[3]
                     );
                     
+                    var_dump($data);
                     import($data);
                     
                     // Write all the user records to the database
@@ -46,18 +47,14 @@ if (isset($_POST) && isset($_POST["send"]) == "submit") {
     }
 } elseif (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['address']) || empty($_POST['link'])) {
     return false;
+    
 } else {
-    $path="../json/";
-    $name="data";
-    $filename = $path . $name.".json";
-    $isCreate = creat($_POST);
-    if ($isCreate) {
-        $address = readAll();
-        $myJsonString = json_encode($address);
-        $handle = fopen($filename, 'r');
-        fwrite($handle, $myJsonString);
-        fclose($handle);
-        var_dump($handle);      
+    //Si c'est pas vide, ajout le nouveau element
+    $idCreate = creat($_POST);
+    if (!empty($idCreate)) {
+        $address = findById($idCreate);
+        $myJsonData= json_encode($address);
+       echo $myJsonData;
     } else
         echo "echec !";
 }

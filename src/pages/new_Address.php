@@ -36,7 +36,7 @@
 						<div
 							class="form-group col-xs-12 floating-label-form-group controls">
 							<label>Title</label> <input type="text" class="form-control"
-								placeholder="Title" id="title" required
+								placeholder="Title" id="create-title" required
 								data-validation-required-message="Please enter the title.">
 							<p class="help-block text-danger"></p>
 						</div>
@@ -46,7 +46,7 @@
 							class="form-group col-xs-12 floating-label-form-group controls">
 							<label>Description</label>
 							<textarea rows="5" class="form-control" placeholder="Description"
-								id="description" required
+								id="create-description" required
 								data-validation-required-message="Please enter the description."></textarea>
 							<p class="help-block text-danger"></p>
 						</div>
@@ -55,7 +55,7 @@
 						<div
 							class="form-group col-xs-12 floating-label-form-group controls">
 							<label>Address</label> <input type="text" class="form-control"
-								placeholder="Address" id="address" required
+								placeholder="Address" id="create-address" required
 								data-validation-required-message="Please enter the new address.">
 							<p class="help-block text-danger"></p>
 						</div>
@@ -64,7 +64,7 @@
 						<div
 							class="form-group col-xs-12 floating-label-form-group controls">
 							<label>Link</label> <input type="text" class="form-control"
-								placeholder="Link" id="link" required
+								placeholder="Link" id="create-link" required
 								data-validation-required-message="Please enter the link ex: www.example.com">
 							<p class="help-block text-danger"></p>
 						</div>

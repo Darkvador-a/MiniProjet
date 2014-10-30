@@ -4,6 +4,7 @@ require_once 'geocode.php';
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
         var map;
+        var tabMarker= [];
         function initialize() {
         	// Une variable pour contenir notre future marker
         	myMarker = null;
@@ -12,7 +13,7 @@ require_once 'geocode.php';
         	var myLatlng = new google.maps.LatLng(-34.397, 150.644);
          
           var mapOptions = {
-            zoom: 8,
+            zoom: 14,
             center: new google.maps.LatLng(-34.397, 150.644)
           };
           /**  Création de la carte **/
@@ -29,10 +30,9 @@ require_once 'geocode.php';
       myGeocoder.geocode(GeocoderOptions, function( results , status ){
           var myAddress = "<?=$val['address']; ?>";
           var myTitle = "<?= $val['title']; ?>";
-          var myMarker=myTitle;          
-        
-        	
-            	console.log(myTitle);
+          var myMarker="<?= $val['id']; ?>";          
+          tabMarker.push(myMarker);
+        	          
      
         	  if( status == google.maps.GeocoderStatus.OK ) {        
         	           	   
@@ -79,7 +79,7 @@ require_once 'geocode.php';
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2>google api</h2>
+				<h2>google map </h2>
 				<hr class="star-light">
 			</div>
 		</div>

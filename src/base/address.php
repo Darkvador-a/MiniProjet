@@ -9,7 +9,6 @@ require_once '../functions/connexion.php';
 function creat($data)
 {
     $result = true;
-    
     $connect = connexion();
     
     $sql = 'INSERT INTO `mini_projet`.`address` (`id`, `address`, `title`, `description`, `url`) 
@@ -26,7 +25,7 @@ function creat($data)
         $result = false;
     }
     
-    return $result;
+    return $connect->lastInsertId();
 }
 
 function import($data)
@@ -50,8 +49,7 @@ function import($data)
 
 function readAll()
 {
-    $connect = connexion();
-    
+    $connect = connexion(); 
     $sql = "SELECT * FROM address";
     $sth = $connect->prepare($sql);
     $sth->execute();
@@ -69,7 +67,7 @@ function readAll()
 function findById($id)
 {
     $connect = connexion();
-    $sql = "SELECT * FROM address WHERE `address.`id` =$id;";
+    $sql = "SELECT * FROM address WHERE `address`.`id` =$id;";
     $sth = $connect->prepare($sql);
     $sth->execute();
     if ($sth->rowCount() > 1) {
@@ -106,12 +104,14 @@ function delete($id)
  */
 function update($data)
 {
+    
     $result = true;
     $connect = connexion();
     $sql = "UPDATE  `mini_projet`.`address` SET  `address` =  :address ,`title` =  :title, `description`=:description,
-         `link` = :link;";
+         `url` = :link WHERE `address`.`id`= :id ;";
     $sth = $connect->prepare($sql);
     $sth->execute(array(
+        'id'=>$data['id'],
         'address' => $data['address'],
         'title' => $data['title'],
         'description' => $data['description'],

@@ -6,10 +6,8 @@ $afterjQuery = '
 	<script>
     var table;
 	$(document).ready( function () {
-            console.log("doncument");
-           table =$("#table_id").DataTable();
-           console.log("document :"+table);
-  });
+         table= displayTable();
+    });
     </script>';
 ?>
       
@@ -23,8 +21,11 @@ $afterjQuery = '
 				<hr class="star-primary">
 			</div>
 		</div>
+		<div class="ajax-response"></div>
+		<div class="oldInfo" style ="display: none;">
+		</div>
 		<div class="row">
-         <?php if (empty($address)){ echo "Le tableau de données est vide"; }else {?>    
+         <?php if (empty($address)){ echo "Le tableau de données est vide"; }else { $i=0;?>    
 		<table id="table_id" class="display">
 				<thead>
 					<tr>
@@ -33,23 +34,28 @@ $afterjQuery = '
 					</tr>
 				</thead>
 				<tbody>
-			 <?php foreach ($address as $val){?>
-				<tr>
+			 <?php foreach ($address as $val){ $i++;?>
+				<tr id="tr-<?=$val['id']?>">
     			    <?php
-                echo "<td id='title'>" . $val['title'] . "</td>";
-                echo "<td>" . $val['description'] . "</td>";
-                echo "<td>" . $val['address'] . "</td>";
-                echo "<td>" . $val['url'] . "</td>";
+    			    $id=$val['id'];
+                echo "<td id='title-$id'>" . $val['title'] . "</td>";
+                echo "<td id='description-$id'>" . $val['description'] . "</td>";
+                echo "<td id='address-$id'>" . $val['address'] . "</td>";
+                echo "<td id='link-$id'>" . $val['url'] . "</td>";
                 ?>
                        
                      <td>
+                      
                         <p id="editbox-button-<?= $val['id']?>" >
+                         <span id="editbox-<?=$i;?>">
                             <button class="btn btn-danger delete" onclick="Delete(<?= $val['id']?>)">Supprimer</button>
 						    <button class="btn btn-success edit-button" onclick="edit(<?= $val['id']?>)">Editer</button>
+						 </span> 
 						 </p>
+						
 					     <p id="editbox-commands-<?= $val['id']?>" style="display: none;">
-                        <button class="btn btn-success" id="edit-book-validate-1" >Valide</button> ou
-                        <button class="btn btn-primary"  id="edit-book-cancel-1" >Cancle</button>
+                        <button class="btn btn-success" id="edit-book-validate-$id" onclick="Valide(<?= $val['id']?>)" >Valide</button> ou
+                        <button class="btn btn-primary"  id="edit-book-cancel-$id" onclick="Cancel(<?= $val['id']?>)" >Cancle</button>
                     </p></td>	
 					</tr>
 			<?php }?>
