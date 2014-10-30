@@ -34,23 +34,17 @@ function ajaxCreateAddress(data){
 			.append('</div>');
 			//Ajout de l'element à la table	      
 	         var id= data["0"]["id"];
-	         var title="<td id='title-"+editButtonNb+"'>" +data["0"]["title"] + "</td>";
-	         var button="<p id='editbox-button-"+id+"'>"+
-                        "<span id='editbox-"+editButtonNb+"'>"+
-                        "<button class='btn btn-danger delete' onclick='Delete("+id+")'>Supprimer</button>"+
-						"<button class='btn btn-success edit-button' onclick='edit("+id+")'>Editer</button>"+
-						 "</span></p>"+
-					     "<p id='editbox-commands-"+id+"' style='display: none;'>"+
-                        "<button class='btn btn-success' id='edit-book-validate-$id' onclick='Valide("+id+")'>Valide</button> ou"+
-                        "<button class='btn btn-primary'  id='edit-book-cancel-$id' onclick='Cancel("+id+")' >Cancle</button></p>";
+	         var button="<p id='editbox-commands-"+id+"' >"+
+                        "<button class='btn btn-warning'>Veuillez recharger la page pour la modification et suppression</button>"+
+                        "</p>";
 			 table.row.add([
-			               title,
+			               data["0"]["title"],
 			               data["0"]["description"],
 			               data["0"]["address"],
 			               data["0"]["url"],
 			               button
 			               ]).draw();
-  	       ajoutMarkup(data);
+  	       addMarker(data);
 			 
 		},
 		error: function() {
@@ -66,9 +60,7 @@ function ajaxCreateAddress(data){
 	});
 }
 	
-function ajoutMarkup(data){
-	console.log(map);
-	
+function addMarker(data){
     var myGeocoder = new google.maps.Geocoder();
     var GeocoderOptions = {
   		  'address' :data['0']['address'],
@@ -77,8 +69,10 @@ function ajoutMarkup(data){
     myGeocoder.geocode(GeocoderOptions, function( results , status ){
         var myAddress = data['0']['address'];
         var myTitle = data['0']['title'];
-        var myMarker=data['0']['id'];          
+        var myMarker=data['0']['id'];     
+        //Ajout le marker à la table
         tabMarker.push(myMarker);
+
       	  if( status == google.maps.GeocoderStatus.OK ) {        
       	           	   
       	    // On créé donc un nouveau marker sur l'adresse géocodée

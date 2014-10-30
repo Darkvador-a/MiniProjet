@@ -5,6 +5,7 @@ require_once 'geocode.php';
 <script>
         var map;
         var tabMarker= [];
+
         function initialize() {
         	// Une variable pour contenir notre future marker
         	myMarker = null;
@@ -30,8 +31,8 @@ require_once 'geocode.php';
       myGeocoder.geocode(GeocoderOptions, function( results , status ){
           var myAddress = "<?=$val['address']; ?>";
           var myTitle = "<?= $val['title']; ?>";
-          var myMarker="<?= $val['id']; ?>";          
-          tabMarker.push(myMarker);
+          var myId="<?= $val['id']; ?>";          
+          
         	          
      
         	  if( status == google.maps.GeocoderStatus.OK ) {        
@@ -40,9 +41,11 @@ require_once 'geocode.php';
         	   myMarker = new google.maps.Marker({
         	      position: results[0].geometry.location,
         	      map: map,
-        	      title: myTitle
+        	      title: myTitle,
+                id: myId
         	    });
-          	    console.log(myMarker);
+          	    tabMarker.push(myMarker);
+                console.log(tabMarker);
        	       //Info Bulle
               	  var contentString = '<div id="content" style="color:#000;">'+
                   '<div id="siteNotice">'+

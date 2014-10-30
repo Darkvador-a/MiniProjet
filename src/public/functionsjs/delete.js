@@ -11,14 +11,13 @@ function Delete (id){
 	  alert("success");
 	  table.row('#tr-'+id).remove().draw( false );
 	  console.log(tabMarker);
-	  console.log(id);
-	  for(var i =0; i<tabMarker.size;i++){
-		  if(tabMarker[i]==id){
-			  console.log(tabMarker[i]);
-			  tabMarker[i].setMap(null);
-			  
-		  }
-	  }
+	  for (var i = 0; i < tabMarker.length; i++) {
+   			 console.log(tabMarker[i].id);
+   			 if(tabMarker[i].id== id){
+   			 	
+   			  tabMarker[i].setMap(null);
+   			}
+  		}
 	  
 	  
 	  })

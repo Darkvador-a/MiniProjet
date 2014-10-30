@@ -61,20 +61,21 @@ if (isset($beforejQuery)) {
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.js"></script>
-<script src="js/import.js"></script>
+<!-- Import CSV-->
+<script src="functionsjs/import.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="js/freelancer.js"></script>
 
-<!-- Contact Form JavaScript -->
+<!-- add new address Form JavaScript -->
 <script src="js/jqBootstrapValidation.js"></script>
-<script src="js/create_addre.js"></script>
+<script src="functionsjs/create_addre.js"></script>
 
 <!-- delete js -->
-<script src="js/delete.js" ></script>
+<script src="functionsjs/delete.js" ></script>
 
 <!-- edit js -->
-<<script src="js/edit.js"></script>
+<<script src="functionsjs/edit.js"></script>
  
 <?= (isset($afterjQuery))? $afterjQuery : "";?>
 
