@@ -22,7 +22,7 @@ if (isset($_POST) && isset($_POST["send"]) == "submit") {
                 
                 $handle = fopen($filename, 'r');
                 while (! feof($handle)) {
-                    $aim = (fgetcsv($handle, 1000, ","));
+                    $aim = (fgetcsv($handle, 1000, ";"));
                     var_dump($aim);
                     $data = array(
                         'title' => $aim[0],
